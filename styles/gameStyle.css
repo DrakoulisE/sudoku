@@ -1,0 +1,54 @@
+.sudoku-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.grid{
+    display: grid;
+    width: 600px;
+    height: 600px;
+    gap: 1px;
+}
+
+.cell{
+    width: 100%;
+    height: 100%;
+    background-color: rgb(58, 58, 58);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    color: rgb(228, 240, 247);
+    border: 2px solid rgba(0, 0, 0, 0.46);
+}
+
+.selectedCell{
+    background-color: rgb(3, 83, 109) !important;
+}
+
+.selectedCellSecondary{
+    background-color: rgb(14, 14, 14);
+}
+
+.selectedCellRowsColumnsSubgrid{
+    background-color: rgb(43, 43, 43);
+}
+
+input{
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: rgb(228, 240, 247);
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.loaging-screen{
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+}

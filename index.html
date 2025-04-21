@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <title>Sudoku</title>
+        <link rel="stylesheet" href="./styles/global.css">
+        <link rel="stylesheet" href="./styles/index.css">
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+        <script src="./script/indexScript.js" defer></script>
+    </head>
+
+    <body>
+        <header>
+            <button id="back-button1">
+                <h1>Sudoku</h1>
+            </button>
+            <button id="settings-button">
+                <ion-icon name="settings"></ion-icon>
+            </button>
+        </header>
+
+        <div class="wrapper">
+
+            <h2>Sudoku</h2>
+
+            <div class="menu">
+                <button class="menu-button" id="play">PLAY</button>
+                <div class="button-wrapper">
+                    <button class="menu-button" id="difficulty">Difficulty</button>
+                    <div class="difficulty-dropdown dropdown hidden">
+                        <button id="easy">Easy</button>
+                        <hr>
+                        <button id="normal">Normal</button>
+                        <hr>
+                        <button id="hard">Hard</button>
+                    </div>
+                </div>
+                <div class="button-wrapper">
+                    <button class="menu-button" id="mode">Mode</button>
+                    <div class="mode-dropdown dropdown hidden">
+                        <button id="mini">
+                            Mini
+                            <p>4x4</p>
+                        </button>
+                        <hr>
+                        <button id="classic">
+                            Classic
+                            <p>9x9</p>
+                        </button>
+                        <hr>
+                        <button id="extreme">
+                            Extreme
+                            <p>16x16</p>
+                        </button>
+                </div>
+          </div>
+
+        </div>
+
+        <footer>
+            <div class="help">
+                <h4>How to play</h4>
+                <p>
+                    Sudoku is a logic-based number puzzle where the goal is to fill a grid so that each row, column,<br>and subgrid contains all the numbers without repeating.
+                </p>
+                <ul>
+                    <li>Select Difficulty</li>
+                    <li>Select Mode</li>
+                    <li>Press PLAY to start</li>
+                </ul>
+              </div>
+        </footer>
+
+    </body>
+
+</html>

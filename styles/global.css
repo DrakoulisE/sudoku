@@ -1,0 +1,81 @@
+body{
+    margin: 0;
+    background-color: rgb(41, 41, 41);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+header{
+    position: absolute;
+    top: 0;
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+#back-button, #back-button1{
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+#back-button:hover h1{
+    color: rgb(0, 146, 195);
+    transition: 0.2s;
+}
+
+#back-button1 h1{
+    color: rgb(140, 140, 140);
+}
+
+
+h1{
+    color: rgb(228, 240, 247);
+}
+
+p{
+    margin: 0;
+}
+
+input{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#settings-button{
+    background-color: transparent;
+    color: rgb(140, 140, 140);
+    font-size: 2rem;
+    border: none;
+    padding: 0;
+    border-radius: 5px;
+    padding-top: 6px;
+    cursor: pointer;
+}
+#settings-button:hover{
+    color: rgb(230, 230, 230);
+    transition: 0.2s;
+}
+
+.hidden{
+    display: none !important;
+}
+
+footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 2%;
+    padding-right: 2%;
+}
