@@ -61,6 +61,8 @@ const generateSudoku = function(mode = "classic".toLowerCase() , difficulty = "n
             break;
     }
 
+    document.querySelector(".difficulty").innerText = difficulty.charAt(0).toUpperCase() + difficulty.slice(1); //capitalize first letter
+
     //game generation
 
     grid = Array.from({ length: sudokuSize}, () => Array(sudokuSize).fill(0));
@@ -186,7 +188,7 @@ function isValidInput(input, iPossition, jPossition){
 }
 
 //wrong tries
-var wrongTries = 0;
+var mistakes = 0;
 
 //cell event listeners set up --- highlight selected cell and all same numbers
 function cellEventListenersSetup(){
@@ -267,6 +269,7 @@ function cellEventListenersSetup(){
                                 input.value = parsedValue; //update input value
                                 input.style.display = "none";
                                 selectedCell.style.color = "rgb(228, 240, 247)";
+                                selectedCell.classList.remove("editable");
                             } else {
                                 cellValue.classList.remove("hidden");
                                 if(!isNaN(parsedValue) && parsedValue > 0){
@@ -275,8 +278,9 @@ function cellEventListenersSetup(){
                                 }
                                 input.style.display = "none";
                                 selectedCell.style.color = "red";
-                                wrongTries++;
-                                console.log("Wrong tries: " + wrongTries); //debug
+                                mistakes++;
+                                document.querySelector(".mistakes").innerText = mistakes + "/3"; //update wrong tries
+                                console.log("Mistakes: " + mistakes); //debug
                             }
                         } else {
                             cellValue.classList.remove("hidden");
