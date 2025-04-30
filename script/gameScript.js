@@ -15,6 +15,7 @@ window.onload = async () => {
     //await pause(500);
     await generateSudoku(selectedMode, selectedDifficulty);
     cellEventListenersSetup();
+    gameTimer();
 
     loadingScreen.classList.add("hidden");
 }
@@ -252,42 +253,50 @@ function cellEventListenersSetup(){
             if(selectedCell.classList.contains("editable")){
                 const input = cell.querySelector(".cell-input");
                 const cellValue = cell.querySelector("p");
+
+
+                 const inputBlur = () => {
+                    const value = input.value.trim();
+                
+                    if (value !== "") {
+                        const parsedValue = parseInt(value);
+                
+                        if (isValidInput(input, iPossition, jPossition)) {
+                            cellValue.classList.remove("hidden");
+                            cellValue.innerText = parsedValue; //update cell value
+                            input.value = parsedValue; //update input value
+                            input.style.display = "none";
+                            selectedCell.style.color = "rgb(228, 240, 247)";
+                            selectedCell.classList.remove("editable");
+                            if(winningCondition()) console.log("WIN!");
+                        } else {
+                            cellValue.classList.remove("hidden");
+                            if(!isNaN(parsedValue) && parsedValue > 0){
+                                const currentValue = parseInt(cellValue.innerText);
+                                if(currentValue !== parsedValue) mistakes++; //increment mistakes only if the value is different
+
+                                cellValue.innerText = parsedValue; //update cell value
+                                input.value = parsedValue;
+                            }
+                            input.style.display = "none";
+                            selectedCell.style.color = "red";
+                            document.querySelector(".mistakes").innerText = mistakes + "/3"; //update wrong tries
+                            console.log("Mistakes: " + mistakes); //debug
+                        }
+                    } else {
+                        cellValue.classList.remove("hidden");
+                        input.style.display = "none";
+                    }
+
+                    input.removeEventListener("blur", inputBlur); //remove event listener to avoid multiple triggers
+                };
+
                 if (input) {
                     input.style.display = "block";
                     cellValue.classList.add("hidden");
                     input.focus();
-
-                    input.addEventListener("blur", () => {
-                        const value = input.value.trim();
                     
-                        if (value !== "") {
-                            const parsedValue = parseInt(value);
-                    
-                            if (isValidInput(input, iPossition, jPossition)) {
-                                cellValue.classList.remove("hidden");
-                                cellValue.innerText = parsedValue; //update cell value
-                                input.value = parsedValue; //update input value
-                                input.style.display = "none";
-                                selectedCell.style.color = "rgb(228, 240, 247)";
-                                selectedCell.classList.remove("editable");
-                            } else {
-                                cellValue.classList.remove("hidden");
-                                if(!isNaN(parsedValue) && parsedValue > 0){
-                                    cellValue.innerText = parsedValue; //update cell value
-                                    input.value = parsedValue;
-                                }
-                                input.style.display = "none";
-                                selectedCell.style.color = "red";
-                                mistakes++;
-                                document.querySelector(".mistakes").innerText = mistakes + "/3"; //update wrong tries
-                                console.log("Mistakes: " + mistakes); //debug
-                            }
-                        } else {
-                            cellValue.classList.remove("hidden");
-                            input.style.display = "none";
-                        }
-                    });
-                    
+                    input.addEventListener("blur", inputBlur);
                     input.addEventListener("keydown", (e) => {
                         if (e.key === "Enter") {
                             input.blur(); // trigger blur
@@ -307,6 +316,33 @@ function cellEventListenersSetup(){
             }
         });
     })
+}
+
+//game timer
+var timerInterval;
+function gameTimer(){
+    var timer = document.querySelector(".timer");
+    var seconds = 0;
+    var minutes = 0;
+    var displayedSeconds = 0;
+
+    timerInterval = setInterval(() => {
+        seconds++;
+        minutes = Math.floor(seconds / 60);
+        displayedSeconds = seconds % 60;
+        timer.innerHTML = (minutes < 10 ? "0" : "") + minutes + " : " + (displayedSeconds < 10 ? "0" : "") + displayedSeconds;
+    }, 1000);
+}
+
+function winningCondition(){
+    for(let i = 0; i < sudokuSize; i++){
+        for(let j = 0; j < sudokuSize; j++){
+            const cellValue = parseInt(cellsArray[i][j].querySelector("p").innerHTML);
+            if(cellValue !== solvedGrid[i][j]) return false;
+        }
+    }
+    clearInterval(timerInterval);
+    return true;
 }
 
 //delay function

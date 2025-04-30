@@ -1,8 +1,14 @@
 in game:
-    1)  when a wrong answer is given the mistakes counter goes up by 1. *BUT* when you click on the cell to change the answer
-        and then click away without making any changes the counter goes up by 2 
+    1)  **DONE** when a wrong answer is given the mistakes counter goes up by 1. *BUT* when you click on the cell to change the answer
+        and then click away without making any changes the counter goes up by 2
 
-    2)  add timer that is displaied in the time section
+    2)  **DONE** add timer that is displaied in the time section
+
+    3)  **DONE** add wining condition + timer pause when condition is mistakes
+
+    4)  add winning screen
+
+    5)  add proper loading screen
 
 later:
     1)  add themes
