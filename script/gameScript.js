@@ -268,7 +268,10 @@ function cellEventListenersSetup(){
                             input.style.display = "none";
                             selectedCell.style.color = "rgb(228, 240, 247)";
                             selectedCell.classList.remove("editable");
-                            if(winningCondition()) console.log("WIN!");
+                            if(winningCondition()) {
+                                console.log("WIN!"); //debug
+                                gameEnd(win = true, mistakes);
+                            }
                         } else {
                             cellValue.classList.remove("hidden");
                             if(!isNaN(parsedValue) && parsedValue > 0){
@@ -280,6 +283,7 @@ function cellEventListenersSetup(){
                             }
                             input.style.display = "none";
                             selectedCell.style.color = "red";
+                            if(mistakes > 2) gameEnd(win = false, mistakes); 
                             document.querySelector(".mistakes").innerText = mistakes + "/3"; //update wrong tries
                             console.log("Mistakes: " + mistakes); //debug
                         }
@@ -345,6 +349,21 @@ function winningCondition(){
     return true;
 }
 
+function gameEnd(win = false, mistakes = 0){
+    clearInterval(timerInterval);
+    const loseScreen = document.querySelector(".gameEndStatScreen");
+    loseScreen.classList.remove("hidden");
+    if(win){
+        document.querySelector("#result").innerHTML = "YOU WON!"
+    }else{
+        document.querySelector("#result").innerHTML = "YOU LOSE!"
+    }
+    document.querySelector("#stat-time").innerHTML = document.querySelector(".timer").innerHTML;
+    document.querySelector("#stat-mistakes").innerHTML = mistakes;
+    document.querySelector("#stat-mode").innerHTML = selectedMode;
+    document.querySelector("#stat-difficulty").innerHTML = selectedDifficulty;
+}
+
 //delay function
 function pause(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -360,4 +379,11 @@ function displaySudoku(){
 }
 
 
+//stat screen buttons
+document.querySelector("#newGame").addEventListener("click", () => {
+    window.location.reload();
+})
 
+document.querySelector("#homeScreen").addEventListener("click", () => {
+    window.location.href = "index.html"; //go back to main page
+})

@@ -10,6 +10,7 @@ body{
 }
 
 header{
+    z-index: 3;
     position: absolute;
     top: 0;
     width: 95%;
@@ -78,4 +79,11 @@ footer{
     justify-content: space-between;
     padding-left: 2%;
     padding-right: 2%;
+}
+
+@media(max-width: 1050px){
+    * button{
+        font-size: 7rem;
+    }
+
 }

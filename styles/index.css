@@ -100,3 +100,32 @@ h2{
 .help{
     color: gray;
 }
+
+@media(max-width: 1050px){
+    .menu{
+        width: 90vw;
+    }
+    #play{
+        width: 80%;
+        height: 12vh;
+        font-size: 5vw;
+    }
+    .button-wrapper{
+        width: 80%;
+        height: 12vh;
+    }
+    .menu-button{
+        font-size: 5vw;
+    }
+
+    .difficulty-dropdown button{
+        font-size: 4vw;
+    }
+
+    .mode-dropdown button{
+        font-size: 4vw;
+    }
+    .mode-dropdown button > p{
+        font-size: 3vw;
+    }
+}
