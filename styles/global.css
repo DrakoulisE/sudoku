@@ -15,7 +15,7 @@ header{
     top: 0;
     width: 95%;
     display: flex;
-    justify-content: space-between;
+    justify-content: baseline;
     padding-left: 2%;
     padding-right: 2%;
 }
@@ -33,7 +33,7 @@ header{
 }
 
 #back-button1 h1{
-    color: rgb(140, 140, 140);
+    color: rgba(140, 140, 140, 0.5);
 }
 
 
@@ -47,21 +47,6 @@ p{
 
 input{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
-#settings-button{
-    background-color: transparent;
-    color: rgb(140, 140, 140);
-    font-size: 2rem;
-    border: none;
-    padding: 0;
-    border-radius: 5px;
-    padding-top: 6px;
-    cursor: pointer;
-}
-#settings-button:hover{
-    color: rgb(230, 230, 230);
-    transition: 0.2s;
 }
 
 .hidden{
@@ -86,4 +71,15 @@ footer{
         font-size: 7rem;
     }
 
+    header{
+        justify-content: center;
+    }
+
+    #back-button, #back-button1{
+        font-size: 2vh;
+    }
+
+    footer{
+        font-size: 1.5vh;
+    }
 }
