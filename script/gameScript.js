@@ -12,7 +12,7 @@ window.onload = async () => {
     let loadingScreen = document.querySelector(".loading-screen");
     loadingScreen.classList.remove("hidden");
 
-    //await pause(500);
+    //await pause(3500); debug loading screen
     await generateSudoku(selectedMode, selectedDifficulty);
     cellEventListenersSetup();
     gameTimer();
